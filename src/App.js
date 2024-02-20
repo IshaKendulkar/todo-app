@@ -1,23 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+ const [todo, setTodo] = useState([])
+  const addtodo = () =>
+  {
+    console.log("Add todo")
+
+ const todotext = document.getElementById("todoInput").value
+
+ console.log("todotext: "+todotext)
+
+ todo.push(todotext)
+ setTodo([...todo]) //=>
+    //todoArray.puch()
+  }
+
+  console.log("Length of Todo",todo.length)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Todo App</h1>
+      <input id="todoInput" type='text' placeholder='Add your Todo here...'/>
+      <button onClick={addtodo}>Add</button><br/>
+      {todo.map(tempTodo =>
+        {
+      
+       return <div>{tempTodo}</div>
+
+      })}
     </div>
   );
 }
